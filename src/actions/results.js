@@ -1,0 +1,2 @@
+export const GET_RESULTS = "GET_RESULTS"
+export const UPDATE_RESULT = "UPDATE_RESULT"
