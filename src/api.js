@@ -18,13 +18,11 @@ export function fetchInitialData() {
 }
 
 export function fetchUsers() {
-    // return new Promise([
-    //     _getUsers
-    // ]).then(
-    //     (users) => ({
-    //         users
-    //     })
-    // );
+    return new Promise(_getUsers).then(
+        (users) => ({
+            users
+        })
+    );
 }
 
 export function saveQuestion(data) {

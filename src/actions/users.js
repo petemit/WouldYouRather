@@ -1,10 +1,12 @@
-
+import { fetchUsers } from "../api";
 import { _getUsers } from './../_DATA';
+
+
 
 export const GET_USERS = "GET_USERS";
 export const ADD_USER = "ADD_USER";
 
-export default function getUsers(users) {
+export function getUsers(users) {
     return {
         type: GET_USERS,
         users
@@ -14,7 +16,7 @@ export default function getUsers(users) {
 export function handleFetchUsers() {
     return (dispatch) => {
         return _getUsers()
-        .then(({users}) => {
+        .then((users) => {
             dispatch(getUsers(users))
         })
     }

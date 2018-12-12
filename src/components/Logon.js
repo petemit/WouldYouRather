@@ -1,30 +1,52 @@
 import React, { Component } from "react";
 import { DropdownButton, MenuItem } from "react-bootstrap";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import { handleFetchUsers } from "../actions/users";
+import { setCurrentUser } from './../actions/currentUser';
 class Logon extends Component {
     componentDidMount() {
-        this.props.dispatch(handleFetchUsers())
+        this.props.dispatch(handleFetchUsers());
     }
-    render() { 
-        var username = this.props.selectedUser
-        if (username === undefined) {
-            username = "Please Select a User"
-        }
-        return (
-            <div>
-                <h2 className="center">Welcome to Would You Rather!</h2>
 
-                <DropdownButton 
-                bsStyle="default"
-                title={username}
-                id={"selectUser"}>
-                    <MenuItem>User1</MenuItem>
-                    <MenuItem>User2</MenuItem>
+    onDropdownSelect = (event) => {
+            this.props.dispatch(setCurrentUser(event))
+    }
+    render() {
+        const { users, currentUser } = this.props;
+        console.log(users)
+        console.log(currentUser)
+        var currentUserText = "Please Select a User"
+        return (
+            <div className="center">
+                <h2>Welcome to Would You Rather!</h2>
+
+                <DropdownButton
+                    bsStyle="default"
+                    title={currentUser === "" ? "Please Select a User": users[currentUser].name}
+                    id={"selectUser"}
+                    key="1"
+                >
+                    {Object.keys(users).length !== 0 &&
+                        Object.keys(users).map(user => {
+                            return (  
+                                    <MenuItem 
+                                    key={user}
+                                    eventKey={user}
+                                    onSelect={this.onDropdownSelect}
+                                    >{users[user].name}</MenuItem>
+                            );
+                        })}
                 </DropdownButton>
             </div>
         );
     }
 }
 
-export default connect()(Logon);
+function mapStateToProps({users, currentUser} ) {
+    return {
+        users,
+        currentUser,
+    };
+}
+
+export default connect(mapStateToProps)(Logon);
