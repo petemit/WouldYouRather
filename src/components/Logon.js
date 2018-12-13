@@ -27,15 +27,15 @@ class Logon extends Component {
                     id={"selectUser"}
                     key="1"
                 >
-                    {Object.keys(users).length !== 0 &&
-                        Object.keys(users).map(user => {
+                    {Object.values(users).length !== 0 &&
+                        Object.values(users).map(user => {
                             return (
                                 <MenuItem
-                                    key={user}
-                                    eventKey={user}
+                                    key={user.id}
+                                    eventKey={user.id}
                                     onSelect={this.onDropdownSelect}
                                 >
-                                    {users[user].name}
+                                    {user.name}
                                 </MenuItem>
                             );
                         })}

@@ -1,7 +1,4 @@
-import { fetchUsers } from "../api";
 import { _getUsers } from './../_DATA';
-
-
 
 export const GET_USERS = "GET_USERS";
 export const ADD_USER = "ADD_USER";
