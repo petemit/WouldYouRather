@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleFetchQuestions } from "./../actions/questions";
+import Avatar from "./Avatar";
 
 class QuestionBoard extends Component {
     componentDidMount() {
@@ -10,14 +11,37 @@ class QuestionBoard extends Component {
         const { questions, users } = this.props;
         return (
             <div>
-                {questions != undefined &&
-                    Object.values(questions).map(question => {
-                        return (
-                            <div key={question.id}>
-                                {users[question.author].name}
-                            </div>
-                        );
-                    })}
+                <h3 className="center">Would You Rather...</h3>
+                <ul>
+                    {questions != undefined &&
+                        Object.values(questions).map(question => {
+                            return (
+                                <div>
+                                    <li className="question" key={question.id}>
+                                        <span>
+                                        <h3 className="questionText">{questions[question.id].optionOne.text}</h3>
+                                        <h3 className="questionText">OR...</h3>
+                                        </span>
+                                        <div className="avatar_container">
+                                            <div className="right">
+                                                <Avatar
+                                                    align="right"
+                                                    user={
+                                                        users[question.author]
+                                                            .name
+                                                    }
+                                                    avatarURL={
+                                                        users[question.author]
+                                                            .avatarURL
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            );
+                        })}
+                </ul>
             </div>
         );
     }
