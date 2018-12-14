@@ -12,7 +12,6 @@ class App extends Component {
 
     render() {
         var { currentUser } = this.props;
-        console.log(currentUser);
         return (
             <Router>
                 <div className="container">
