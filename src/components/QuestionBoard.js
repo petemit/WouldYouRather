@@ -7,10 +7,10 @@ import QuestionList from "./QuestionList";
 
 class QuestionBoard extends Component {
     componentDidMount() {
-        this.props.dispatch(handleFetchQuestions());
+       
     }
     render() {
-        
+
         return (
             <Tabs defaultActiveKey={1} id="questionTabs">
                 <Tab eventKey={1} title="Unanswered Polls">
@@ -24,7 +24,5 @@ class QuestionBoard extends Component {
         );
     }
 }
-
-
 
 export default connect()(QuestionBoard);

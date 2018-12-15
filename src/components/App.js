@@ -6,10 +6,15 @@ import QuestionBoard from "./QuestionBoard";
 import Nav from "./Nav";
 import AddPoll from "./AddPoll";
 import Poll from "./Poll";
+import currentUser from './../reducers/currentUser';
+import { handleFetchQuestions } from './../actions/questions';
 
 class App extends Component {
-    componentDidMount() {}
-
+    componentDidMount() {
+        if (currentUser !== "") {
+            this.props.dispatch(handleFetchQuestions());
+        }
+    }
     render() {
         var { currentUser } = this.props;
         return (

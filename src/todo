@@ -1,6 +1,9 @@
-Create Reducer for Questions
-Create Reducer for results?  
-Create reducer for users
-Create reducer for authedUser // maybe
-Create combineReducer logic
-Find Avatars
+Nav
+---Logged in User
+Leaderboard
+Create New Question
+404
+Answering a Question
+Logging out
+Sorting polls by creation date (earliest to latest)
+Maybe make checkmark more clear
