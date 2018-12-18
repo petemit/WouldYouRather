@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Avatar from "./Avatar";
 import { Link, withRouter } from "react-router-dom";
-import { questionContainsCurrentUser, questionDoesNotContainCurrentUser } from './../util';
+import { questionAnsweredByCurrentUser, questionNotAnsweredByCurrentUser } from './../util';
 
 class QuestionList extends Component {
     render() {
@@ -15,8 +15,8 @@ class QuestionList extends Component {
                         Object.values(questions)
                             .filter(question =>
                                 answered === "true"
-                                    ? questionContainsCurrentUser(question, currentUser)
-                                    : questionDoesNotContainCurrentUser(question, currentUser)
+                                    ? questionAnsweredByCurrentUser(question, currentUser)
+                                    : questionNotAnsweredByCurrentUser(question, currentUser)
                             )
                             .map(question => {
                                 return (

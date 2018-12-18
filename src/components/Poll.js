@@ -5,13 +5,14 @@ import { MdCheckCircle } from "react-icons/md";
 import {
     getResultsFromQuestion,
     getOption,
-    questionContainsCurrentUser
+    questionAnsweredByCurrentUser
 } from "../util";
+import { updateQuestion } from "../actions/questions";
 
 class Poll extends Component {
-    onClickOption = (e, option) => {
+    onClickOption = (e, option, questionId) => {
         e.preventDefault();
-        console.log(option);
+        this.props.dispatch(updateQuestion(questionId, option, this.props.currentUser))
     };
     render() {
         const { questions, users, currentUser, id } = this.props;
@@ -21,7 +22,7 @@ class Poll extends Component {
         }
 
         const option = getOption(question, currentUser);
-        const answered = questionContainsCurrentUser(question, currentUser);
+        const answered = questionAnsweredByCurrentUser(question, currentUser);
 
         //statistics
         const {
@@ -45,9 +46,11 @@ class Poll extends Component {
                                             : { background: "#d7e29b" }
                                         : {}
                                 }
-                                onClick={e =>
-                                    this.onClickOption(e, "optionOne")
-                                }
+                                onClick={e => {
+                                    if (!answered) {
+                                        this.onClickOption(e, "optionOne", question.id);
+                                    }
+                                }}
                             >
                                 {questions[question.id].optionOne.text}
                             </h4>
@@ -57,7 +60,7 @@ class Poll extends Component {
                             {optionOneUserCount !== 1 ? "users" : "user"}:{" "}
                             {optionOnePercentage}
                             {option === "optionOne" && (
-                                <MdCheckCircle color="#a3cea8AA" />
+                                <MdCheckCircle color="#79d666" />
                             )}
                         </h4>
                     </div>
@@ -77,9 +80,11 @@ class Poll extends Component {
                                             : { background: "#d7e29b" }
                                         : {}
                                 }
-                                onClick={e =>
-                                    this.onClickOption(e, "optionTwo")
-                                }
+                                onClick={e => {
+                                    if (!answered) {
+                                        this.onClickOption(e, "optionTwo", question.id);
+                                    }
+                                }}
                             >
                                 {questions[question.id].optionTwo.text}
                             </h4>
@@ -89,7 +94,7 @@ class Poll extends Component {
                             {optionTwoUserCount !== 1 ? "users" : "user"} :{" "}
                             {optionTwoPercentage}
                             {option === "optionTwo" && (
-                                <MdCheckCircle color="#a3cea8AA" />
+                                <MdCheckCircle color="#79d666" />
                             )}
                         </h4>
                     </div>

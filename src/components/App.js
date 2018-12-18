@@ -8,6 +8,7 @@ import AddPoll from "./AddPoll";
 import Poll from "./Poll";
 import currentUser from './../reducers/currentUser';
 import { handleFetchQuestions } from './../actions/questions';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
     componentDidMount() {
@@ -26,10 +27,11 @@ class App extends Component {
                             <Route path="/" exact component={QuestionBoard} />
                             <Route path="/questions/:id" component={Poll} />
                             <Route path="/add" component={AddPoll} />
-                            <Route path="/leaderboard" component={Poll} />
+                            <Route path="/leaderboard" component={Leaderboard} />
                         </div>
                     ) : (
                         <div>
+                            <Nav />
                             <Logon />
                         </div>
                     )}

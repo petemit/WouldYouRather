@@ -1,4 +1,5 @@
 
+/* Many of these classes were heavily influenced by the reactnd-chirper-app.  :)  */
 body {
   margin: 0;
   padding: 0;
@@ -22,9 +23,24 @@ ul.nav.nav-tabs {
   padding: 10px;
 }
 
+.navUl {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLi {
+  display: inline;
+}
+
 .questionText {
   text-align: center;
   width: 350px;
+}
+
+.leaderText {
+  padding-left: 50px;
+  width: 100px;
 }
 
 .orText {
@@ -37,7 +53,7 @@ ul.nav.nav-tabs {
 
 .splitQuestionText {
   padding: 20px;
-  border: 4px solid #84c0a2;
+  border: 4px solid #84c0a2;  
   height: 150px;
   text-align: center;
   width: 170px;
@@ -53,6 +69,17 @@ ul.nav.nav-tabs {
   border: 1px solid #dad7d7;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.userCard {
+  width: 100%;
+  max-width: 590px;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
 }
 
 .avatar_container {
@@ -89,6 +116,13 @@ a {
 
 ul {
   padding-left: 0;
+}
+
+.statTable {
+  width: 150px;
+  border: #000000;
+  border-width: 1px;
+  float: left;
 }
 
 .nav ul {

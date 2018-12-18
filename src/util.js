@@ -1,15 +1,15 @@
-export function questionContainsCurrentUser(question, currentUser) {
+export function questionAnsweredByCurrentUser(question, currentUser) {
     return (
         question.optionOne.votes.filter(vote => vote === currentUser).length > 0
             ||
         question.optionTwo.votes.filter(vote => vote === currentUser).length > 0
     );
 }
-export function questionDoesNotContainCurrentUser(question, currentUser) {
+export function questionNotAnsweredByCurrentUser(question, currentUser) {
     return (
-        question.optionOne.votes.filter(vote => vote !== currentUser).length > 0
+        question.optionOne.votes.filter(vote => vote === currentUser).length === 0
             &&
-        question.optionTwo.votes.filter(vote => vote !== currentUser).length > 0
+        question.optionTwo.votes.filter(vote => vote === currentUser).length === 0
     );
 }
 export function getResultsFromQuestion(question) {
