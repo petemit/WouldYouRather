@@ -7,12 +7,14 @@ import {
     getOption,
     questionAnsweredByCurrentUser
 } from "../util";
-import { updateQuestion } from "../actions/questions";
+import { handleUpdateQuestion } from "../actions/questions";
 
 class Poll extends Component {
     onClickOption = (e, option, questionId) => {
         e.preventDefault();
-        this.props.dispatch(updateQuestion(questionId, option, this.props.currentUser))
+        this.props.dispatch(
+            handleUpdateQuestion(questionId, option, this.props.currentUser)
+        );
     };
     render() {
         const { questions, users, currentUser, id } = this.props;
@@ -35,7 +37,14 @@ class Poll extends Component {
             <div>
                 <h3 className="center">Would You Rather...</h3>
                 <div className="question">
-                    <div className="side">
+                    <div
+                        className="side"
+                        onClick={e => {
+                            if (!answered) {
+                                this.onClickOption(e, "optionOne", question.id);
+                            }
+                        }}
+                    >
                         <span>
                             <h4
                                 className="splitQuestionText"
@@ -46,11 +55,6 @@ class Poll extends Component {
                                             : { background: "#d7e29b" }
                                         : {}
                                 }
-                                onClick={e => {
-                                    if (!answered) {
-                                        this.onClickOption(e, "optionOne", question.id);
-                                    }
-                                }}
                             >
                                 {questions[question.id].optionOne.text}
                             </h4>
@@ -69,7 +73,14 @@ class Poll extends Component {
                             <h4 className="orText">OR...</h4>
                         </span>
                     </div>
-                    <div className="side">
+                    <div
+                        className="side"
+                        onClick={e => {
+                            if (!answered) {
+                                this.onClickOption(e, "optionTwo", question.id);
+                            }
+                        }}
+                    >
                         <span>
                             <h4
                                 className="splitQuestionText"
@@ -80,11 +91,6 @@ class Poll extends Component {
                                             : { background: "#d7e29b" }
                                         : {}
                                 }
-                                onClick={e => {
-                                    if (!answered) {
-                                        this.onClickOption(e, "optionTwo", question.id);
-                                    }
-                                }}
                             >
                                 {questions[question.id].optionTwo.text}
                             </h4>

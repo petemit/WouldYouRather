@@ -26,6 +26,7 @@ class Leaderboard extends Component {
                         .map(user => {
                             const asked = Object.values(questions).filter(question => question.author === user.id).length;
                             const answered = Object.values(questions).filter(question => questionAnsweredByCurrentUser(question, user.id)).length;
+                            console.log(answered +user.id)
                             const total = asked+answered;
                             return (
                                 <li key={user.id} className="userCard">

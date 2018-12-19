@@ -1,6 +1,8 @@
 
-Leaderboard --almost done... have a bug in my counts
 Create New Question
+write to database for new question and new answer
 404
 Sorting polls by creation date (earliest to latest)
 sigh... proptypes
+error handling for uncaught database calls
+I would like a loading bar, too

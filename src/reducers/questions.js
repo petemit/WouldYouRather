@@ -11,10 +11,11 @@ export default function questions(state = null, action) {
                 ...state,
                 ...action.questions
             };
+            
         case ADD_QUESTION:
             return {
                 ...state,
-                ...action.question
+                [action.question.id]: action.question
             };
         case UPDATE_QUESTION:
             return {

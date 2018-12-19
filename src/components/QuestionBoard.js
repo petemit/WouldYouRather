@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Tabs, Tab } from "react-bootstrap";
-import { handleFetchQuestions } from "./../actions/questions";
-import Avatar from "./Avatar";
 import QuestionList from "./QuestionList";
 
 class QuestionBoard extends Component {
-    componentDidMount() {
-       
-    }
+
     render() {
 
         return (
