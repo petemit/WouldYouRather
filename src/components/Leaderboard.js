@@ -12,7 +12,7 @@ class Leaderboard extends Component {
                 <h3 className="center">Leaderboard</h3>
                 <ul>
                 {/* Not a huge fan that I'm doing these calculations twice.  I haven't figured out a better way to do this, yet. */}
-                    {users != undefined &&
+                    {users !== undefined &&
                         Object.values(users).sort((a,b) => {
                             const aAsked = Object.values(questions).filter(question => question.author === a.id).length;
                             const aAnswered = Object.values(questions).filter(question => questionAnsweredByCurrentUser(question, a.id)).length;
@@ -26,11 +26,10 @@ class Leaderboard extends Component {
                         .map(user => {
                             const asked = Object.values(questions).filter(question => question.author === user.id).length;
                             const answered = Object.values(questions).filter(question => questionAnsweredByCurrentUser(question, user.id)).length;
-                            console.log(answered +user.id)
                             const total = asked+answered;
                             return (
-                                <li key={user.id} className="userCard">
-                                    <ul className="leaderText">
+                                <li key={user.id} className="user_card">
+                                    <ul className="leader_text">
                                         <h4>Questions</h4>
                                         <li>
                                             <Stat

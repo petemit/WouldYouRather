@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import Logon from "./Logon";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import QuestionBoard from "./QuestionBoard";
 import Nav from "./Nav";
 import AddPoll from "./AddPoll";
 import Poll from "./Poll";
-import currentUser from './../reducers/currentUser';
-import { handleFetchQuestions } from './../actions/questions';
-import Leaderboard from './Leaderboard';
+import currentUser from "./../reducers/currentUser";
+import { handleFetchQuestions } from "./../actions/questions";
+import Leaderboard from "./Leaderboard";
+import Page404 from "./Page404";
 
 class App extends Component {
     componentDidMount() {
@@ -24,10 +25,20 @@ class App extends Component {
                     {currentUser !== "" ? (
                         <div>
                             <Nav />
-                            <Route path="/" exact component={QuestionBoard} />
-                            <Route path="/questions/:id" component={Poll} />
-                            <Route path="/add" component={AddPoll} />
-                            <Route path="/leaderboard" component={Leaderboard} />
+                            <Switch>
+                                <Route
+                                    path="/"
+                                    exact
+                                    component={QuestionBoard}
+                                />
+                                <Route path="/questions/:id" component={Poll} />
+                                <Route path="/add" component={AddPoll} />
+                                <Route
+                                    path="/leaderboard"
+                                    component={Leaderboard}
+                                />
+                                <Route component={Page404} />
+                            </Switch>
                         </div>
                     ) : (
                         <div>

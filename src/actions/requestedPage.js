@@ -1,1 +1,0 @@
-export const SET_REQUESTED_PAGE = "SET_REQUESTED_PAGE";

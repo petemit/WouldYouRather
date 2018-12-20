@@ -1,8 +1,7 @@
-
-Create New Question
-write to database for new question and new answer
-404
-Sorting polls by creation date (earliest to latest)
-sigh... proptypes
-error handling for uncaught database calls
-I would like a loading bar, too
+404 -- 20 -- DONE
+Sorting polls by creation date (earliest to latest) --20 --DONE
+sigh... proptypes --20 --DONE
+error handling for uncaught database calls --20
+I would like a loading bar, too --30
+write readme - 10
+Cleanup --20

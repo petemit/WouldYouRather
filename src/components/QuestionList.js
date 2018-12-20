@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Avatar from "./Avatar";
 import { Link, withRouter } from "react-router-dom";
-import { questionAnsweredByCurrentUser, questionNotAnsweredByCurrentUser } from './../util';
+import {
+    questionAnsweredByCurrentUser,
+    questionNotAnsweredByCurrentUser
+} from "./../util";
+import { PropTypes } from "prop-types";
 
 class QuestionList extends Component {
     render() {
@@ -11,13 +15,22 @@ class QuestionList extends Component {
             <div>
                 <h3 className="center">Would You Rather...</h3>
                 <ul>
-                    {questions != undefined &&
+                    {questions !== undefined &&
                         Object.values(questions)
                             .filter(question =>
                                 answered === "true"
-                                    ? questionAnsweredByCurrentUser(question, currentUser)
-                                    : questionNotAnsweredByCurrentUser(question, currentUser)
+                                    ? questionAnsweredByCurrentUser(
+                                          question,
+                                          currentUser
+                                      )
+                                    : questionNotAnsweredByCurrentUser(
+                                          question,
+                                          currentUser
+                                      )
                             )
+                            .sort((a, b) => {
+                                return b.timestamp - a.timestamp;
+                            })
                             .map(question => {
                                 return (
                                     <Link
@@ -39,14 +52,14 @@ class QuestionList extends Component {
                                                 }
                                             >
                                                 <span>
-                                                    <h3 className="questionText">
+                                                    <h3 className="question_text">
                                                         {
                                                             questions[
                                                                 question.id
                                                             ].optionOne.text
                                                         }
                                                     </h3>
-                                                    <h3 className="questionText">
+                                                    <h3 className="question_text">
                                                         OR...
                                                     </h3>
                                                 </span>
@@ -88,5 +101,9 @@ function mapStateToProps({ questions, users, currentUser }, { answered }) {
         answered
     };
 }
+
+QuestionList.propTypes = {
+    answered: PropTypes.string.isRequired
+};
 
 export default withRouter(connect(mapStateToProps)(QuestionList));

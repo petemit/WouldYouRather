@@ -11,7 +11,7 @@ export default function questions(state = null, action) {
                 ...state,
                 ...action.questions
             };
-            
+
         case ADD_QUESTION:
             return {
                 ...state,
@@ -25,23 +25,25 @@ export default function questions(state = null, action) {
                     optionOne:
                         action.option === "optionOne"
                             ? {
-                                  votes: state[action.id].optionOne.votes.concat(
-                                      [action.currentUser]
-                                  ),
+                                  votes: state[
+                                      action.id
+                                  ].optionOne.votes.concat([
+                                      action.currentUser
+                                  ]),
                                   text: state[action.id].optionOne.text
-
-                                  //...state[action.option]
                               }
                             : state[action.id].optionOne,
                     optionTwo:
                         action.option === "optionTwo"
                             ? {
-                                  votes: state[action.id].optionTwo.votes.concat(
-                                      [action.currentUser]
-                                  ),
+                                  votes: state[
+                                      action.id
+                                  ].optionTwo.votes.concat([
+                                      action.currentUser
+                                  ]),
                                   text: state[action.id].optionTwo.text
                               }
-                            :  state[action.id].optionTwo
+                            : state[action.id].optionTwo
                 }
             };
         default:

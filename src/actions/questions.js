@@ -12,17 +12,18 @@ export function getQuestions(questions) {
     };
 }
 
-function addQuestion (question) {
+function addQuestion(question) {
     return {
         type: ADD_QUESTION,
         question
-    }
+    };
 }
 
 export function handleAddQuestion(question) {
     return (dispatch, getState) => {
-        return saveQuestion(question)
-        .then((question) => dispatch(addQuestion(question)))
+        return saveQuestion(question).then(question =>
+            dispatch(addQuestion(question))
+        );
     };
 }
 
@@ -32,13 +33,11 @@ export function handleUpdateQuestion(id, option, currentUser) {
             authedUser: currentUser,
             qid: id,
             answer: option
-        })
-        .then(() => dispatch(updateQuestion(id, option, currentUser)))
-    }
+        }).then(() => dispatch(updateQuestion(id, option, currentUser)));
+    };
 }
 
 function updateQuestion(id, option, currentUser) {
-    
     return {
         type: UPDATE_QUESTION,
         id,

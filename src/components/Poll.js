@@ -8,6 +8,8 @@ import {
     questionAnsweredByCurrentUser
 } from "../util";
 import { handleUpdateQuestion } from "../actions/questions";
+import { Redirect } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 class Poll extends Component {
     onClickOption = (e, option, questionId) => {
@@ -21,6 +23,9 @@ class Poll extends Component {
         let question = null;
         if (questions != null) {
             question = questions[id];
+        }
+        if (question == null) {
+            return <Redirect to="/notAPage" />;
         }
 
         const option = getOption(question, currentUser);
@@ -47,7 +52,7 @@ class Poll extends Component {
                     >
                         <span>
                             <h4
-                                className="splitQuestionText"
+                                className="split_question_text"
                                 style={
                                     answered === true
                                         ? option === "optionOne"
@@ -70,7 +75,7 @@ class Poll extends Component {
                     </div>
                     <div>
                         <span>
-                            <h4 className="orText">OR...</h4>
+                            <h4 className="or_text">OR...</h4>
                         </span>
                     </div>
                     <div
@@ -83,7 +88,7 @@ class Poll extends Component {
                     >
                         <span>
                             <h4
-                                className="splitQuestionText"
+                                className="split_question_text"
                                 style={
                                     answered === true
                                         ? option === "optionTwo"
@@ -137,5 +142,9 @@ function mapStateToProps({ questions, users, currentUser }, props) {
         currentUser
     };
 }
+
+Poll.propTypes = {
+    id: PropTypes.string.isRequired
+};
 
 export default connect(mapStateToProps)(Poll);

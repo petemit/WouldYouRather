@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, withRouter} from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
-
 
 class AddPoll extends Component {
     state = {
@@ -20,11 +19,13 @@ class AddPoll extends Component {
     handleSubmit = e => {
         var { currentUser } = this.props;
         e.preventDefault();
-        this.props.dispatch(handleAddQuestion({
-            optionOneText: this.state.optionOneText,
-            optionTwoText: this.state.optionOneText,
-            author: currentUser
-        }));
+        this.props.dispatch(
+            handleAddQuestion({
+                optionOneText: this.state.optionOneText,
+                optionTwoText: this.state.optionOneText,
+                author: currentUser
+            })
+        );
         this.setState(() => ({
             optionOneText: "",
             optionTwoText: "",
@@ -43,7 +44,7 @@ class AddPoll extends Component {
                 <h4 className="center">Would You Rather...</h4>
                 <form onSubmit={this.handleSubmit}>
                     <div className="question">
-                        <div className="newPollSide">
+                        <div className="new_poll_side">
                             <textarea
                                 placeholder="Option One"
                                 value={optionOneText}
@@ -56,11 +57,11 @@ class AddPoll extends Component {
                         </div>
                         <div>
                             <span>
-                                <h4 className="orText">OR...</h4>
+                                <h4 className="or_text">OR...</h4>
                             </span>
                         </div>
 
-                        <div className="newPollSide">
+                        <div className="new_poll_side">
                             <textarea
                                 placeholder="Option Two"
                                 value={optionTwoText}

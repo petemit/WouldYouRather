@@ -1,4 +1,16 @@
 # Would You Rather Project
+This simple project is a fun and simple "Would You Rather" question game allowing multiple users to create questions with two options, as well as answer those questions.  The app also includes a leaderboard to allow users to compete on the number of combined answered questions and questions asked.  
+
+## Technologies used
+React, Redux, React-Redux, some React-Bootstrap (for some UI)
+
+## How to Launch
+
+Please run 
+`npm install`
+`npm start`
+
+# Starter code description
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.
 

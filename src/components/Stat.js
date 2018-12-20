@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Stat = props => {
     return (
-        <table className="statTable">
+        <table className="stat_table">
             <tbody>
                 <tr>
                     <th
