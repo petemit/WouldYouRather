@@ -15,7 +15,7 @@ class QuestionList extends Component {
             <div>
                 <h3 className="center">Would You Rather...</h3>
                 <ul>
-                    {questions !== undefined &&
+                    {questions !== null &&
                         Object.values(questions)
                             .filter(question =>
                                 answered === "true"

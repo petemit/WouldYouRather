@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../actions/currentUser";
+import { clearQuestions } from "../actions/questions";
 
 class Nav extends Component {
     Logout = e => {
         this.props.dispatch(setCurrentUser(""));
+        //clearing questions so non-logged on user cannot access them
+        this.props.dispatch(clearQuestions());
     };
     render() {
         const { users, currentUser } = this.props;

@@ -18,6 +18,10 @@ export function saveQuestion(data) {
     return _saveQuestion(data);
 }
 
-export function saveQuestionAnswer(data) {
+export function saveAnswer(data) {
+    // return new Promise((res, rej) => { 
+
+    // }
+
     return _saveQuestionAnswer(data);
 }

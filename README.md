@@ -2,13 +2,18 @@
 This simple project is a fun and simple "Would You Rather" question game allowing multiple users to create questions with two options, as well as answer those questions.  The app also includes a leaderboard to allow users to compete on the number of combined answered questions and questions asked.  
 
 ## Technologies used
-React, Redux, React-Redux, some React-Bootstrap (for some UI)
+React, Redux, React-Redux, some React-Bootstrap (for some UI), and the React-Redux-Loading-Bar
 
 ## How to Launch
 
 Please run 
 `npm install`
 `npm start`
+
+
+## Database
+
+The database is a faux database that mimics an async database.  It comes from starter code from Udacity for the Would You Rather project. The following section is a description of this starter data as well as the API.  
 
 # Starter code description
 

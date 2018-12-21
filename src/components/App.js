@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import Logon from "./Logon";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -6,17 +6,12 @@ import QuestionBoard from "./QuestionBoard";
 import Nav from "./Nav";
 import AddPoll from "./AddPoll";
 import Poll from "./Poll";
-import currentUser from "./../reducers/currentUser";
-import { handleFetchQuestions } from "./../actions/questions";
+
 import Leaderboard from "./Leaderboard";
 import Page404 from "./Page404";
+import LoadingBar from 'react-redux-loading-bar'
 
 class App extends Component {
-    componentDidMount() {
-        if (currentUser !== "") {
-            this.props.dispatch(handleFetchQuestions());
-        }
-    }
     render() {
         var { currentUser } = this.props;
         return (
@@ -25,6 +20,7 @@ class App extends Component {
                     {currentUser !== "" ? (
                         <div>
                             <Nav />
+                            <LoadingBar />
                             <Switch>
                                 <Route
                                     path="/"
@@ -43,6 +39,7 @@ class App extends Component {
                     ) : (
                         <div>
                             <Nav />
+                            <LoadingBar />
                             <Logon />
                         </div>
                     )}

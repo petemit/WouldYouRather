@@ -3,6 +3,7 @@ import { DropdownButton, MenuItem } from "react-bootstrap";
 import { connect } from "react-redux";
 import { handleFetchUsers } from "../actions/users";
 import { setCurrentUser } from "./../actions/currentUser";
+import { handleFetchQuestions } from "./../actions/questions";
 class Logon extends Component {
     componentDidMount() {
         this.props.dispatch(handleFetchUsers());
@@ -10,6 +11,7 @@ class Logon extends Component {
 
     onDropdownSelect = event => {
         this.props.dispatch(setCurrentUser(event));
+        this.props.dispatch(handleFetchQuestions());
     };
     render() {
         const { users, currentUser } = this.props;

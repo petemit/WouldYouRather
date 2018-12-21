@@ -12,7 +12,7 @@ class Leaderboard extends Component {
                 <h3 className="center">Leaderboard</h3>
                 <ul>
                 {/* Not a huge fan that I'm doing these calculations twice.  I haven't figured out a better way to do this, yet. */}
-                    {users !== undefined &&
+                    {users !== null && questions != null &&
                         Object.values(users).sort((a,b) => {
                             const aAsked = Object.values(questions).filter(question => question.author === a.id).length;
                             const aAnswered = Object.values(questions).filter(question => questionAnsweredByCurrentUser(question, a.id)).length;

@@ -8,8 +8,8 @@ import {
     questionAnsweredByCurrentUser
 } from "../util";
 import { handleUpdateQuestion } from "../actions/questions";
-import { Redirect } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import Page404 from './Page404';
 
 class Poll extends Component {
     onClickOption = (e, option, questionId) => {
@@ -18,16 +18,23 @@ class Poll extends Component {
             handleUpdateQuestion(questionId, option, this.props.currentUser)
         );
     };
+
+    componentDidMount() {
+
+    }
     render() {
         const { questions, users, currentUser, id } = this.props;
         let question = null;
-        if (questions != null) {
+        if (questions !== null) {
             question = questions[id];
+            if (question == null) {
+                return (<Page404/>);
+            }
         }
-        if (question == null) {
-            return <Redirect to="/notAPage" />;
+        else {
+            return <div></div>
         }
-
+        
         const option = getOption(question, currentUser);
         const answered = questionAnsweredByCurrentUser(question, currentUser);
 
